@@ -1,0 +1,73 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css2?family=Bangers&display=swap);@-webkit-keyframes autofill {
+  to {
+    color: #666;
+    background: transparent;
+  }
+}
+
+@keyframes autofill {
+  to {
+    color: #666;
+    background: transparent;
+  }
+}
+
+input:-webkit-autofill {
+  -webkit-animation-name: autofill;
+  animation-name: autofill;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.navbar {
+  background-color: #1B1B1E !important;
+  padding: 0.1rem 1rem;
+}
+
+.navbar a {
+  color: #D8DBE2 !important;
+}
+
+.navbar .navbar-brand {
+  font-family: "Bangers", cursive;
+  font-size: 2.4rem;
+}
+
+.button_glow {
+  color: #373f51 !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #ffffff;
+  padding: 0.4rem 1rem;
+  border: 3px solid #373f51 !important;
+  display: inline-block;
+  transition: all 0.4s ease 0s;
+}
+
+.button_glow:hover {
+  color: #ffffff !important;
+  background: #373f51;
+  border-color: #373f51 !important;
+  transition: all 0.4s ease 0s;
+}
+
+.loginreg-heading {
+  font-family: "Bangers", cursive;
+  font-size: 2.6rem;
+  margin-bottom: 2.4rem;
+}
+
+.profile-picture {
+  border-radius: 100%;
+}
+
+.profile-links {
+  font-size: 0.8rem;
+  text-decoration: none;
+  color: black;
+}
+
+.profile-links:hover {
+  color: teal;
+}
+
