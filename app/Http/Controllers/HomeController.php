@@ -26,7 +26,8 @@ class HomeController extends Controller
 
         if ((int)\Auth::user()->user_type == 1 && \Auth::user()->isAdmin == false) {
             $jobs_available = DB::table('jobs')
-            ->where('job_status', 'unassigned')
+            ->where('job_status','!=', 'ongoing')
+            ->where('job_status','!=', 'completed')
             ->paginate(5);
     
             return view('freelancer.home', ['jobs_available' => $jobs_available]);

@@ -35,7 +35,12 @@
                         <td>{{$app->name}}</td>
                         <td>@mdo</td>
                         <td>
-                            <button type="button" class="btn btn-indigo btn-sm m-0 waves-effect">View Application</button>
+                        <form action="{{route('employer.showfreeprofile')}}" method="POST">
+                            @csrf
+                            <input type="hidden" name="job_id" value="{{$job->job_id}}">
+                            <input type="hidden" name="free_id" value="{{$app->free_id}}">
+                            <button type="submit" class="btn btn-indigo btn-sm m-0 waves-effect">View Profile</button>
+                        </form>    
                         </td>
                         </tr>
                         @endforeach

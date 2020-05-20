@@ -98,10 +98,8 @@
                                     <p class="card-text">Job Address: {{$job->job_address}}</p>
                                     <p class="card-text">Job Description: Taka {{$job->job_description}}</p>
 
-                                    <form action="#" method="GET">
-                                        @csrf
-                                        <button type="submit" class="btn btn-block btn-danger">DELETE</button>
-                                    </form>   
+                                    <a href="{{route('employer.showjob', $job->job_id)}}" class="btn btn-info">View Details</a>
+  
                                 </div>
                                 </div>
                             </div>

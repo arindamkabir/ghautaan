@@ -18,7 +18,7 @@ class EmployerController extends Controller
         $job = DB::table('jobs')->where('job_id', $id)->first();
         $applicants = DB::table('jobs')
         ->join('users', 'jobs.free_id', '=', 'users.id')
-        ->where('users.id', \Auth::user()->id)
+        ->where('job_id', $id)
         ->get();
 
         return view('employer.showjob', ['job' => $job, 'applicants' => $applicants]);
@@ -42,5 +42,32 @@ class EmployerController extends Controller
 
         return redirect()->route('home')
             ->with('success','Job Successfully Created');
+    }
+
+    public function showfreeprofile(Request $request){
+        $job_id = $request->job_id;
+        $free_id = $request->free_id;
+
+        $job = DB::table('jobs')->where('job_id', $job_id)->first();
+
+        return view('employer.showjob', ['job' => $job, 'free_id' => $free_id]);
+    }
+
+    public function acceptapp(Request $request){
+        $job_id = $request->job_id;
+        $free_id = $request->free_id;
+
+        $job = DB::table('jobs')->where('job_id', $job_id)->first();
+
+        return view('employer.showjob', ['job' => $job, 'free_id' => $free_id]);
+    }
+
+    public function rejectapp(Request $request){
+        $job_id = $request->job_id;
+        $free_id = $request->free_id;
+
+        $job = DB::table('jobs')->where('job_id', $job_id)->first();
+
+        return view('employer.showjob', ['job' => $job, 'free_id' => $free_id]);
     }
 }

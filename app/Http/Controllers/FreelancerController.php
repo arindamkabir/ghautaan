@@ -17,14 +17,26 @@ class FreelancerController extends Controller
 
     public function showjob($id){
         $job = DB::table('jobs')->where('job_id', $id)->first();
-        return view('freelancer.viewjob', ['job' => $job]);
+        $applied = false;
+        $app = DB::table('job_applications')
+        ->where('job_id', $id)
+        ->where('free_id', \Auth::user()->id)
+        ->get();
+        if(count($app) > 0){
+            $applied = true;
+        } 
+        return view('freelancer.viewjob', ['job' => $job,'applied'=> $applied ]);
     }
 
     public function applyjob(Request $request){
         $id = $request->id;
         DB::table('jobs')
         ->where('job_id', $id)
-        ->update(['job_status' => 'pending', 'free_id' => \Auth::user()->id]);
+        ->update(['job_status' => 'pending']);
+        DB::table('job_applications')->insert([
+            'job_id'=> $id,
+            'free_id' => \Auth::user()->id,
+        ]);
 
         return back();
     }
@@ -32,7 +44,11 @@ class FreelancerController extends Controller
         $id = $request->id;
         DB::table('jobs')
         ->where('job_id', $id)
-        ->update(['job_status' => 'unassigned', 'free_id' => NULL]);
+        ->update(['job_status' => 'unassigned']);
+        DB::table('cancelled_applications')->insert([
+            'job_id'=> $id,
+            'free_id' => \Auth::user()->id,
+        ]);
 
         return back();
     }
