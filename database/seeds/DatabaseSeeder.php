@@ -12,10 +12,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            [ 'name' => 'Ayon', 'email' => 'smunt@munni.com', 'password' => Hash::make('123456'), 'user_type' => '1', 'mobile_number' => '01191111606', 'created_at' => date('Y-m-d H:i:s')],
-            [ 'name' => 'Munni', 'email' => 'munty@munni.com', 'password' => Hash::make('123456'), 'user_type' => '2', 'mobile_number' => '01191111606', 'created_at' => date('Y-m-d H:i:s')],
-            [ 'name' => 'Auro', 'email' => 'smt@mmun.com', 'password' => Hash::make('123456'), 'user_type' => '1', 'mobile_number' => '01191111606', 'created_at' => date('Y-m-d H:i:s')],
-            [ 'name' => 'Munna', 'email' => 'mnty@munna.com', 'password' => Hash::make('123456'), 'user_type' => '2', 'mobile_number' => '01191111606', 'created_at' => date('Y-m-d H:i:s')],
+            [ 'name' => 'Ayon', 'email' => 'smunt@munni.com', 'username'=>'ayon', 'password' => Hash::make('123456'), 'user_type' => '1', 'mobile_number' => '01191111606', 'created_at' => date('Y-m-d H:i:s')],
+            [ 'name' => 'Munni', 'email' => 'munty@munni.com', 'username'=>'munni', 'password' => Hash::make('123456'), 'user_type' => '2', 'mobile_number' => '01191111606', 'created_at' => date('Y-m-d H:i:s')],
+            [ 'name' => 'Auro', 'email' => 'smt@mmun.com', 'username'=>'auro', 'password' => Hash::make('123456'), 'user_type' => '1', 'mobile_number' => '01191111606', 'created_at' => date('Y-m-d H:i:s')],
+            [ 'name' => 'Munna', 'email' => 'mnty@munna.com', 'username'=>'munna', 'password' => Hash::make('123456'), 'user_type' => '2', 'mobile_number' => '01191111606', 'created_at' => date('Y-m-d H:i:s')],
         ]);
         DB::table('freelancers')->insert([
             [ 'user_id' => '1', 'spec' => 'Photographer', 'created_at' => date('Y-m-d H:i:s')],

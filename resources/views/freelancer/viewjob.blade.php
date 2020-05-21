@@ -7,6 +7,12 @@
     <div class="card">
     <h5 class="card-header">{{$job->job_title}}</h5>
     <div class="card-body">
+                <h5 class="card-title">Job Details: </h5>
+                <p class="card-text">Job Category: {{$job->job_category}}</p>
+                <p class="card-text">Job Budget: Taka {{$job->job_budget}}</p>
+                <p class="card-text">Job Date: {{$job->job_date}}</p>
+                <p class="card-text">Job Address: {{$job->job_address}}</p>
+                <p class="card-text">Job Description: {{$job->job_description}}</p>
     @if(!$applied)
     <form method="POST" action="{{route('freelancer.applyjob', $job->job_id)}}" enctype="multipart/form-data">
     @csrf

@@ -37,23 +37,23 @@ class HomeController extends Controller
             ->join('users', 'jobs.user_id', '=', 'users.id')
             ->where('users.id', \Auth::user()->id)
             ->where('job_status', 'unassigned')
-            ->get();
+            ->paginate(5);
             $jobs_pending = DB::table('jobs')
             ->join('users', 'jobs.user_id', '=', 'users.id')
             ->where('users.id', \Auth::user()->id)
             ->where('job_status', 'pending')
-            ->get();
+            ->paginate(5);
             $jobs_completed = DB::table('jobs')
             ->join('users', 'jobs.user_id', '=', 'users.id')
             ->where('users.id', \Auth::user()->id)
             ->where('job_status', 'completed')
-            ->get();
-            $all_jobs = DB::table('jobs')
-            ->join('users', 'jobs.user_id', '=', 'users.id')
-            ->where('users.id', \Auth::user()->id)
-            ->get();
+            ->paginate(5);
+            // $all_jobs = DB::table('jobs')
+            // ->join('users', 'jobs.user_id', '=', 'users.id')
+            // ->where('users.id', \Auth::user()->id)
+            // ->paginate(5);
     
-            return view('employer.home', ['all_jobs' => $all_jobs,'jobs_unassigned' => $jobs_unassigned , 'jobs_pending' => $jobs_pending, 'jobs_completed' => $jobs_completed]);       
+            return view('employer.home', ['jobs_unassigned' => $jobs_unassigned , 'jobs_pending' => $jobs_pending, 'jobs_completed' => $jobs_completed]);       
         }
     }
 }

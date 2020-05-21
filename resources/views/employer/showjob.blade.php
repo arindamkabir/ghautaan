@@ -9,10 +9,16 @@
     <div class="card-body">
         <div class="card">
             <div class="card-body">
-                <h5>Job Details: </h5>
+                <h5 class="card-title">Job Details: </h5>
+                <p class="card-text">Job Category: {{$job->job_category}}</p>
+                <p class="card-text">Job Budget: Taka {{$job->job_budget}}</p>
+                <p class="card-text">Job Date: {{$job->job_date}}</p>
+                <p class="card-text">Job Address: {{$job->job_address}}</p>
+                <p class="card-text">Job Description: {{$job->job_description}}</p>
             </div>
         </div>
-        <div class="card">
+        @if(count($applicants) > 0)
+        <div class="card mt-3">
             <div class="card-body">
                 <h5>Job Applicants: </h5>
 
@@ -33,7 +39,7 @@
                         <th scope="row">1</th>
 
                         <td>{{$app->name}}</td>
-                        <td>@mdo</td>
+                        <td>{{$app->created_at}}</td>
                         <td>
                         <form action="{{route('employer.showfreeprofile')}}" method="POST">
                             @csrf
@@ -49,6 +55,7 @@
                 </table>
             </div>
         </div>
+        @endif
     </div>
 
     </div>

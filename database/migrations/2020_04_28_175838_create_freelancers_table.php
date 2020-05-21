@@ -18,6 +18,11 @@ class CreateFreelancersTable extends Migration
             $table->integer('user_id');            
             $table->integer('wallet')->default(0);
             $table->string('spec');
+            // $table->string('address');
+            // $table->string('experience');
+            // $table->string('about');
+            // $table->string('achievements');
+            $table->boolean('profile_completed')->default(0);
             $table->timestamps();
         });
     }

@@ -71,3 +71,37 @@
 .profile-links:hover {
     color: teal;
   }
+.profile-icon{
+    font-size: 1.4rem;
+}
+
+.navbar{
+    .dropdown{
+        .dropdown-menu{
+        a{
+            color:black !important;
+        }
+    }
+    }
+}
+
+.nav-tabs{
+    border: none !important;
+    .nav-link{
+        border: none !important;
+        
+    }
+    .nav-link.active{
+        display: inline-block;
+        color: #000;
+        text-decoration: none;
+        }
+        
+    .nav-link.active::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 2px;
+        background: #000;
+    }
+}

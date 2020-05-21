@@ -16,8 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::any('/search', 'FreelancerController@search')->name('search');
 
-
+Route::any('/profile/{username}', 'ProfileController@show')->name('profile');
 Route::get('/jobs/create', 'EmployerController@jobcreate')->name('jobs.create');
 Route::post('/jobs', 'EmployerController@jobstore')->name('jobs.store');
 Route::get('/profile/jobs/{job}', 'EmployerController@showjob')->name('employer.showjob');

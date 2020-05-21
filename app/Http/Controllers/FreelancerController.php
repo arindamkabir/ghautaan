@@ -15,6 +15,19 @@ class FreelancerController extends Controller
 
     }
 
+    public function search(Request $request){
+        $searchTerm = $request->search;
+        $results = DB::table('jobs')   
+        ->where('job_title', 'LIKE', "%{$searchTerm}%") 
+        ->orWhere('job_description', 'LIKE', "%{$searchTerm}%")
+        ->orWhere('job_category', 'LIKE', "%{$searchTerm}%")
+        ->orWhere('job_address', 'LIKE', "%{$searchTerm}%")  
+        ->get();
+
+        return view('freelancer.searchresults',['results' => $results, 'number_results' => $results->count()]);
+
+    }
+
     public function showjob($id){
         $job = DB::table('jobs')->where('job_id', $id)->first();
         $applied = false;
@@ -36,20 +49,31 @@ class FreelancerController extends Controller
         DB::table('job_applications')->insert([
             'job_id'=> $id,
             'free_id' => \Auth::user()->id,
+            'created_at' => date('Y-m-d H:i:s')
         ]);
 
-        return back();
+        return back()->with('danger','Application Successful.');
     }
     public function canceljobapp(Request $request){
         $id = $request->id;
-        DB::table('jobs')
-        ->where('job_id', $id)
-        ->update(['job_status' => 'unassigned']);
         DB::table('cancelled_applications')->insert([
             'job_id'=> $id,
             'free_id' => \Auth::user()->id,
+            'created_at' => date('Y-m-d H:i:s')
         ]);
+        DB::table('job_applications')->where([
+            ['job_id'=> $id],
+            ['free_id' => \Auth::user()->id],
+        ])->delete();
+        $app = DB::table('job_applications')
+        ->where('job_id', $id)
+        ->get();
+        if(count($app) == 0){ 
+            DB::table('jobs')
+            ->where('job_id', $id)
+            ->update(['job_status' => 'unassigned']);
+        }
 
-        return back();
+        return back()->with('danger','Application Cancelled.');
     }
 }
