@@ -1,35 +1,46 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
-
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+@import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
 // Variables
-@import 'variables';
+@import "variables";
 
 @-webkit-keyframes autofill {
     to {
-    color: #666;
-    background: transparent; } }
-    
-    @keyframes autofill {
+        color: #666;
+        background: transparent;
+    }
+}
+
+@keyframes autofill {
     to {
-    color: #666;
-    background: transparent; } }
-    
-    input:-webkit-autofill {
+        color: #666;
+        background: transparent;
+    }
+}
+body {
+    font-family: "Montserrat", sans-serif;
+}
+.page {
+    padding: 0 10rem 0 10rem;
+}
+
+input:-webkit-autofill {
     -webkit-animation-name: autofill;
     animation-name: autofill;
     -webkit-animation-fill-mode: both;
-    animation-fill-mode: both; 
+    animation-fill-mode: both;
 }
-.navbar{
-    background-color: #1B1B1E !important;
+.navbar {
+    background-color: #1b1b1e !important;
     padding: 0.1rem 1rem;
-    a{
-        color: #D8DBE2 !important;
+    a {
+        color: #d8dbe2 !important;
     }
 
-    .navbar-brand{
-        font-family: 'Bangers', cursive;
+    .navbar-brand {
+        font-family: "Bangers", cursive;
         font-size: 2.4rem;
     }
 }
@@ -51,18 +62,17 @@
     transition: all 0.4s ease 0s;
 }
 
-.loginreg-heading{
-    font-family: 'Bangers', cursive;
+.loginreg-heading {
+    font-family: "Bangers", cursive;
     font-size: 2.6rem;
     margin-bottom: 2.4rem;
-
 }
 
-.profile-picture{
-    border-radius: 100%;
+.profile-picture {
+    border-radius: 50%;
 }
 
-.profile-links{
+.profile-links {
     font-size: 0.8rem;
     text-decoration: none;
     color: black;
@@ -70,38 +80,73 @@
 
 .profile-links:hover {
     color: teal;
-  }
-.profile-icon{
+}
+.profile-icon {
     font-size: 1.4rem;
 }
 
-.navbar{
-    .dropdown{
-        .dropdown-menu{
-        a{
-            color:black !important;
+.navbar {
+    .dropdown {
+        .dropdown-menu {
+            a {
+                color: black !important;
+            }
         }
-    }
     }
 }
 
-.nav-tabs{
+.nav-tabs {
     border: none !important;
-    .nav-link{
+    .nav-link {
         border: none !important;
-        
     }
-    .nav-link.active{
+    .nav-link.active {
         display: inline-block;
         color: #000;
         text-decoration: none;
-        }
-        
+    }
+
     .nav-link.active::after {
-        content: '';
+        content: "";
         display: block;
         width: 0;
         height: 2px;
         background: #000;
+    }
+}
+
+.sidebar {
+    .nav-link {
+        color: #fff !important;
+        padding: 0.5rem, 1rem;
+        font-weight: 600;
+    }
+}
+
+.sidebar-sticky {
+    height: 100vh;
+    position: sticky;
+    padding-top: 0.5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.page-heading {
+    font-weight: 600;
+    margin-top: 2rem;
+}
+.img-circle {
+    border-radius: 100%;
+}
+
+.free_edit_sidebar {
+    padding-top: 1rem;
+    .nav-link {
+        text-decoration: none;
+        color: #adb5bd;
+        font-size: 0.9rem;
+        padding: 0.8rem 0 0.8rem 0;
+    }
+    .active {
+        color: #343a40;
     }
 }

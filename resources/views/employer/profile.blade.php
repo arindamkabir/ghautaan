@@ -9,7 +9,7 @@
         <div class="col-md-3">
             <div class="card">
                 <div class="card-body">
-                    
+
                     <div class="text-center profile-picture-div">
                         <div class="text-center profile-picture-div">
                             @if($data->pro_pic_name != null)
@@ -40,7 +40,7 @@
                 <div class="card-body">
                     <h2 class="pro-subheading mb-3">General Information</h2>
                     <div class="row">
-                        
+
                         <div class="col-sm-3 profile-about-details-left">
                             <p>Name</p>
                             <p>Username</p>
@@ -63,31 +63,16 @@
                 <div class="card-body">
                 <h2 class="pro-subheading mb-3">Contact Information</h2>
                     <div class="row">
-                
+
                         <div class="col-sm-3 profile-about-details-left">
                             <p>Email</p>
                             <p>Contact</p>
-                            <p>Address</p>
                         </div>
                         <div class="col-sm profile-about-details-right">
                             <p>{{$data->email}}</p>
                             <p>{{$data->mobile_number}}</p>
-                            <p>{{$data->address}}, {{$data->city}}, {{$data->state}}-{{$data->zip}}</p>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="card mb-3" >
-                <div class="card-body">
-                    <h2 class="pro-subheading mb-3">About Me</h2>
-                    <p>{{$data->about}}</p>
-                </div>
-            </div>
-            <div class="card mb-3" >
-                <div class="card-body">
-                    <h2 class="pro-subheading">Portfolio Gallery</h2>
-                    <p>You can add pictures to your portofolio!</p>
                 </div>
             </div>
         </div>

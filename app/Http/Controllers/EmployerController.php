@@ -19,7 +19,7 @@ class EmployerController extends Controller
         $applicants = DB::table('job_applications')
         ->join('users', 'job_applications.free_id', '=', 'users.id')
         ->where('job_id', $id)
-        ->select('users.name', 'job_applications.free_id', 'job_applications.created_at')
+        ->select('users.f_name', 'users.l_name','job_applications.free_id', 'job_applications.created_at')
         ->get();
 
         return view('employer.showjob', ['job' => $job, 'applicants' => $applicants]);
@@ -45,13 +45,17 @@ class EmployerController extends Controller
             ->with('success','Job Successfully Created');
     }
 
-    public function showfreeprofile(Request $request){
+    public function show_free_prof(Request $request){
         $job_id = $request->job_id;
         $free_id = $request->free_id;
+        $freelancer = DB::table('freelancers')
+        ->join('users', 'freelancers.user_id', '=', 'users.id')
+        ->where('freelancers.free_id', $free_id)
+        ->first();
 
         $job = DB::table('jobs')->where('job_id', $job_id)->first();
 
-        return view('employer.freelancerprof', ['job' => $job, 'free_id' => $free_id]);
+        return view('employer.free_prof', ['job' => $job, 'freelancer' => $freelancer]);
     }
 
     public function acceptapp(Request $request){

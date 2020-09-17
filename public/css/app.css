@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css2?family=Bangers&display=swap);@-webkit-keyframes autofill {
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css2?family=Bangers&display=swap);@import url(https://fonts.googleapis.com/css2?family=Montserrat&display=swap);@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap);@-webkit-keyframes autofill {
   to {
     color: #666;
     background: transparent;
@@ -12,6 +12,14 @@
   }
 }
 
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+.page {
+  padding: 0 10rem 0 10rem;
+}
+
 input:-webkit-autofill {
   -webkit-animation-name: autofill;
   animation-name: autofill;
@@ -20,12 +28,12 @@ input:-webkit-autofill {
 }
 
 .navbar {
-  background-color: #1B1B1E !important;
+  background-color: #1b1b1e !important;
   padding: 0.1rem 1rem;
 }
 
 .navbar a {
-  color: #D8DBE2 !important;
+  color: #d8dbe2 !important;
 }
 
 .navbar .navbar-brand {
@@ -58,7 +66,7 @@ input:-webkit-autofill {
 }
 
 .profile-picture {
-  border-radius: 100%;
+  border-radius: 50%;
 }
 
 .profile-links {
@@ -99,5 +107,44 @@ input:-webkit-autofill {
   width: 0;
   height: 2px;
   background: #000;
+}
+
+.sidebar .nav-link {
+  color: #fff !important;
+  padding: 0.5rem, 1rem;
+  font-weight: 600;
+}
+
+.sidebar-sticky {
+  height: 100vh;
+  position: -webkit-sticky;
+  position: sticky;
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.page-heading {
+  font-weight: 600;
+  margin-top: 2rem;
+}
+
+.img-circle {
+  border-radius: 100%;
+}
+
+.free_edit_sidebar {
+  padding-top: 1rem;
+}
+
+.free_edit_sidebar .nav-link {
+  text-decoration: none;
+  color: #adb5bd;
+  font-size: 0.9rem;
+  padding: 0.8rem 0 0.8rem 0;
+}
+
+.free_edit_sidebar .active {
+  color: #343a40;
 }
 

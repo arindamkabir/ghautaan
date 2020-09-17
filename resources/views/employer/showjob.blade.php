@@ -38,10 +38,10 @@
                         <tr>
                         <th scope="row">1</th>
 
-                        <td>{{$app->name}}</td>
+                        <td>{{$app->f_name}} {{$app->l_name}}</td>
                         <td>{{$app->created_at}}</td>
                         <td>
-                        <form action="{{route('employer.showfreeprofile')}}" method="POST">
+                        <form action="{{route('employer.show_free_prof')}}" method="POST">
                             @csrf
                             <input type="hidden" name="job_id" value="{{$job->job_id}}">
                             <input type="hidden" name="free_id" value="{{$app->free_id}}">

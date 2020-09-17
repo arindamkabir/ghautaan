@@ -65961,8 +65961,8 @@ if (document.getElementById('example')) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Arindam Kabir\Desktop\ghautaan\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Arindam Kabir\Desktop\ghautaan\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\AuroDa\Desktop\ghautaan\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\AuroDa\Desktop\ghautaan\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

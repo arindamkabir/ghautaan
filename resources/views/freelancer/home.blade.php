@@ -17,48 +17,59 @@
         </form>
         <div class="row">
             <div class="col-md-3 mt-4">
-                <div class="card mt-5">
-                    <div class="card-body">
-                        <p class="text-muted">Category</p>
-                        <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="category" checked>
-                        <label class="custom-control-label" for="defaultGroupExample1">All</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultGroupExample2" name="category" >
-                        <label class="custom-control-label" for="defaultGroupExample2">Photography</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input" id="defaultGroupExample3" name="category">
-                        <label class="custom-control-label" for="defaultGroupExample3">Make-up</label>
-                        </div>
+                <div class="card">
+                    <div class="card-body py-3">
+                        <h5 class="text-center">Advanced Search</h5>
                     </div>
                 </div>
-                <div class="card mt-2">
-                    <div class="card-body">
-                        <p class="text-muted">Budget</p>
-                       
-                        <select class="browser-default custom-select">
-                        <option value="" disabled selected>Budget</option>
-                        <option value="1">>5000</option>
-                        <option value="2">>10000</option>
-                        <option value="3">>15000</option>
-                        </select>
+                <form action="{{route('advanced_search')}}" method="POST">
+                {{ method_field('PUT') }}
+                @csrf
+                    <div class="card mt-2">
+                        <div class="card-body">
+                            <p class="text-muted">Category</p>
+                            <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="category" checked>
+                            <label class="custom-control-label" for="defaultGroupExample1" >All</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="defaultGroupExample2" name="category"  value="Photography">
+                            <label class="custom-control-label" for="defaultGroupExample2">Photography</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="defaultGroupExample3" name="category" value="Make-up">
+                            <label class="custom-control-label" for="defaultGroupExample3" >Make-up</label>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="card mt-2">
-                    <div class="card-body">
-                        <p class="text-muted">Location</p>
+                    <div class="card mt-2">
+                        <div class="card-body">
+                            <p class="text-muted">Budget</p>
+                        
+                            <select class="browser-default custom-select" name="budget">
+                            <option value="0" disabled selected>Budget</option>
+                            <option value="5000">>5000</option>
+                            <option value="10000">>10000</option>
+                            <option value="15000">>15000</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card mt-2">
+                        <div class="card-body">
+                            <p class="text-muted">Location</p>
 
-                        <select class="browser-default custom-select">
-                        <option value="" disabled selected>Location</option>
-                        <option value="1">Dhaka</option>
-                        <option value="2">Sylhet</option>
-                        <option value="3">Chittagong</option>
-                        </select>
+                            <select class="browser-default custom-select" name="location">
+                            <option value=" " disabled selected>Location</option>
+                            <option value="Dhaka">Dhaka</option>
+                            <option value="Sylhet">Sylhet</option>
+                            <option value="Chittagong">Chittagong</option>
+                            </select>
+                        </div>
                     </div>
+                
+                    <button class="btn btn-md btn-block btn-dark text-center mt-3" type="submit">Search</button>
+                    </form>
                 </div>
-            </div>
             <div class="col-md-9">
                 
 
