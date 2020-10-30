@@ -16,7 +16,7 @@ class ProfileController extends Controller
             ->where('username', $username)
             ->first();
 
-            return view('freelancer.profile' , ['data' => $data]);
+            return view('freelancer.profile.view' , ['data' => $data]);
 
         }
         elseif ((int)\Auth::user()->user_type == 2 && \Auth::user()->isAdmin == false) {
@@ -25,7 +25,7 @@ class ProfileController extends Controller
             ->where('username', $username)
             ->first();
 
-            return view('employer.profile' , ['data' => $data]);
+            return view('employer.profile.view' , ['data' => $data]);
 
         }
     }
@@ -36,10 +36,15 @@ class ProfileController extends Controller
             ->where('username', $username)
             ->first();
             
-            return view('freelancer.editprofile_gen' , ['data' => $data]);
+            return view('freelancer.profile.edit.general' , ['data' => $data]);
         }
         elseif ((int)\Auth::user()->user_type == 2 && \Auth::user()->isAdmin == false) {
-            return view('freelancer.editprofile_gen');
+            $data = DB::table('users')
+            ->join('employers', 'employers.user_id', '=', 'users.id')
+            ->where('username', $username)
+            ->first();
+            
+            return view('employer.profile.edit.general' , ['data' => $data]);
 
         }
     }
@@ -66,7 +71,25 @@ class ProfileController extends Controller
             ->with('success','You have successfully updated your information.');
         }
         elseif ((int)\Auth::user()->user_type == 2 && \Auth::user()->isAdmin == false) {
-            return view('freelancer.editprofile_gen');
+            DB::table('users')
+            ->where('id', \Auth::user()->id)
+            ->update([
+                'f_name' => $request->f_name,
+                'l_name' => $request->l_name,
+                'username' => $request->username,
+                'email' => $request->email,
+                'mobile_number' => $request->contact,
+            ]);
+          DB::table('employers')
+            ->where('user_id', \Auth::user()->id)
+            ->update([
+                'city' => $request->city,
+                'state' => $request->state,
+                'address' => $request->address,
+                'zip' => $request->zip
+            ]);
+          return back()
+          ->with('success','You have successfully updated your information.');
 
         }
     }
@@ -77,12 +100,17 @@ class ProfileController extends Controller
             ->where('username', $username)
             ->first();
             
-            return view('freelancer.editprofile_pass' , ['data' => $data]);
+            return view('freelancer.profile.edit.password' , ['data' => $data]);
  
 
         }
         elseif ((int)\Auth::user()->user_type == 2 && \Auth::user()->isAdmin == false) {
-            return view('freelancer.editprofile_pass');
+            $data = DB::table('users')
+            ->join('employers', 'employers.user_id', '=', 'users.id')
+            ->where('username', $username)
+            ->first();
+            
+            return view('employer.profile.edit.password' , ['data' => $data]);
 
         }
     }

@@ -9,9 +9,8 @@
     <div class="row my-5">
         <div class="col-md-3">
             <nav class="nav flex-column free_edit_sidebar">        
-                <a class="nav-link" href="{{ route('editprofile',Auth::user()->username)}}">General Information</a>
-                <a class="nav-link active" href="{{route('editpassword',Auth::user()->username)}}">Change Password</a>
-                <a class="nav-link" href="#">Portfolio</a>
+                <a class="nav-link" href="{{ route('profile.edit',Auth::user()->username)}}">General Information</a>
+                <a class="nav-link active" href="{{route('profile.password.edit',Auth::user()->username)}}">Change Password</a>
             </nav>
         </div>
 

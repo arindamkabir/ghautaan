@@ -32,7 +32,7 @@
         <div class="col-md-9 container">
             <div class="row ml-3">
                 <div class="ml-auto">
-                    <a href="{{ route('editprofile',Auth::user()->username)}}" class="btn btn-primary">Edit Profile</a>
+                    <a href="{{ route('profile.edit',Auth::user()->username)}}" class="btn btn-primary">Edit Profile</a>
                 </div>
             </div>
 

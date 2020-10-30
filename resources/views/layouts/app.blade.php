@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Ghautaan') }}</title>
 
     <!-- Scripts -->
 
@@ -63,10 +63,10 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('viewprofile', Auth::user()->username)}}">
+                                    <a class="dropdown-item" href="{{ route('profile.view', Auth::user()->username)}}">
                                         Profile
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('freelancer.manage_sales', Auth::user()->username)}}">
+                                    <a class="dropdown-item" href="">
                                         Manage Sales
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"

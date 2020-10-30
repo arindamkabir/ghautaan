@@ -11,10 +11,10 @@
             <div class="card-body">
                 
                 <div class="text-center profile-picture-div">
-                    <img src="https://api.adorable.io/avatars/150/abott@adorable.png" class="profile-picture" alt="..." >
+                    <img src="{{ asset('images/placeholder.jpg') }}" class="profile-picture" alt="..." width="100%">
                 </div>
                 <div class="text-center mt-1"><a href="#" class="profile-links">Change Profile Picture</a></div>
-                <div class="text-center"><a href="#" class="profile-links">View Profile</a></div>
+                <div class="text-center"><a href="{{ route('profile.view', Auth::user()->username)}}" class="profile-links">View Profile</a></div>
             </div>
         </div>
         <div class="card mt-4">

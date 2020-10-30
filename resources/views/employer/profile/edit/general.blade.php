@@ -9,18 +9,17 @@
     <div class="row my-5">
         <div class="col-md-3">
             <nav class="nav flex-column free_edit_sidebar">        
-                <a class="nav-link active " href="{{ route('editprofile',Auth::user()->username)}}">General Information</a>
-                <a class="nav-link " href="{{route('editpassword',Auth::user()->username)}}">Change Password</a>
-                <a class="nav-link" href="#">Portfolio</a>
+                <a class="nav-link active " href="{{ route('profile.edit',Auth::user()->username)}}">General Information</a>
+                <a class="nav-link " href="{{route('profile.password.edit',Auth::user()->username)}}">Change Password</a>
             </nav>
         </div>
         <div class="col-md-9 container">
-            <div class="d-flex flex-row align-items-center mb-5">
+            <div class="d-flex flex-column align-items-center mb-5">
                 <div class="text-center profile-picture-div">
                     @if($data->pro_pic_name != null)
                         <img src="{{asset($data->pro_pic_path)}}" class="profile-picture" alt="..." width="150px">
                     @else
-                        <img src="https://api.adorable.io/avatars/150/abott@adorable.png" class="profile-picture" alt="..." >
+                        <img src="{{ asset('images/placeholder.jpg') }}" class="profile-picture" alt="..." width="50%">
                     @endif
                 </div>
                 <div>
@@ -37,7 +36,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="{{ route('profile.store_pro_pic') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('profile.pro_pic.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                         
@@ -57,14 +56,14 @@
                 </div>
 
                 <div>
-                    <form action="{{ route('profile.delete_pro_pic') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('profile.pro_pic.delete') }}" method="POST" enctype="multipart/form-data">
                     {{ method_field('PUT') }}
                     @csrf
                     <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                     </form>
                 </div>
             </div>
-            <form action="{{ route('profile.updateprofile', Auth::user()->username) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('profile.update', Auth::user()->username) }}" method="POST" enctype="multipart/form-data">
             {{ method_field('PUT') }}
             @csrf
                 <div class="form-row">

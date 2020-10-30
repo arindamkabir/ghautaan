@@ -15,7 +15,7 @@
                             @if($data->pro_pic_name != null)
                                 <img src="{{asset($data->pro_pic_path)}}" class="profile-picture" alt="..." width="150px">
                             @else
-                                <img src="https://api.adorable.io/avatars/150/abott@adorable.png" class="profile-picture" alt="..." >
+                                <img src="{{ asset('images/placeholder.jpg') }}" class="profile-picture" alt="..." width="100%">
                             @endif
                         </div>
                     </div>
@@ -32,7 +32,7 @@
         <div class="col-md-9 container">
             <div class="row ml-3">
                 <div class="ml-auto">
-                    <a href="{{ route('editprofile',Auth::user()->username)}}" class="btn btn-primary">Edit Profile</a>
+                    <a href="{{ route('profile.edit',Auth::user()->username)}}" class="btn btn-primary">Edit Profile</a>
                 </div>
             </div>
 
@@ -52,7 +52,6 @@
                             <p>{{$data->f_name}} {{$data->l_name}}</p>
                             <p>{{$data->username}}</p>
                             <p>*******</p>
-                            <p>{{$data->profession}}</p>
                             <p>{{$data->dob}}</p>
                         </div>
                     </div>

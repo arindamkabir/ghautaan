@@ -53,7 +53,7 @@ class HomeController extends Controller
             // ->where('users.id', \Auth::user()->id)
             // ->paginate(5);
     
-            return view('employer.home', ['jobs_unassigned' => $jobs_unassigned , 'jobs_pending' => $jobs_pending, 'jobs_completed' => $jobs_completed]);       
+            return view('employer.dashboard', ['jobs_unassigned' => $jobs_unassigned , 'jobs_pending' => $jobs_pending, 'jobs_completed' => $jobs_completed]);       
         }
     }
 }

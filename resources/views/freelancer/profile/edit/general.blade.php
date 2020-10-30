@@ -9,8 +9,8 @@
     <div class="row my-5">
         <div class="col-md-3">
             <nav class="nav flex-column free_edit_sidebar">        
-                <a class="nav-link active " href="{{ route('editprofile',Auth::user()->username)}}">General Information</a>
-                <a class="nav-link " href="{{route('editpassword',Auth::user()->username)}}">Change Password</a>
+                <a class="nav-link active " href="{{ route('profile.edit',Auth::user()->username)}}">General Information</a>
+                <a class="nav-link " href="{{route('profile.password.edit',Auth::user()->username)}}">Change Password</a>
                 <a class="nav-link" href="#">Portfolio</a>
             </nav>
         </div>
@@ -37,7 +37,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="{{ route('profile.store_pro_pic') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('profile.pro_pic.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                         
@@ -57,14 +57,14 @@
                 </div>
 
                 <div>
-                    <form action="{{ route('profile.delete_pro_pic') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('profile.pro_pic.delete') }}" method="POST" enctype="multipart/form-data">
                     {{ method_field('PUT') }}
                     @csrf
                     <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                     </form>
                 </div>
             </div>
-            <form action="{{ route('profile.updateprofile', Auth::user()->username) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('profile.update', Auth::user()->username) }}" method="POST" enctype="multipart/form-data">
             {{ method_field('PUT') }}
             @csrf
                 <div class="form-row">

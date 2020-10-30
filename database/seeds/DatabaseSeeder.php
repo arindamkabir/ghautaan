@@ -24,8 +24,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('employers')->insert([
-            [ 'user_id' => '2','created_at' => date('Y-m-d H:i:s')],
-            [ 'user_id' => '4','created_at' => date('Y-m-d H:i:s')],
+            [ 'user_id' => '2','created_at' => date('Y-m-d H:i:s'), 'dob' => '1992-08-15','address' => '4/6 Uttara','city' => 'Dhaka','state' => 'Dhaka','zip' => '1207','created_at' => date('Y-m-d H:i:s')],
+            [ 'user_id' => '4','created_at' => date('Y-m-d H:i:s'), 'dob' => '1992-08-15','address' => '4/6 Uttara','city' => 'Dhaka','state' => 'Dhaka','zip' => '1207','created_at' => date('Y-m-d H:i:s')],
         ]);
         
         DB::table('jobs')->insert([

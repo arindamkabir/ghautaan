@@ -19,13 +19,20 @@ Route::get('/', function () {
 Route::post('/search', 'FreelancerController@search')->name('search');
 Route::put('/advanced_search', 'FreelancerController@advanced_search')->name('advanced_search');
 
-// Profile Routes
+// Profile Routes Start
+
 Route::get('/profile/{username}', 'ProfileController@viewprofile')->name('profile.view');
 Route::get('/profile/{username}/edit', 'ProfileController@editprofile')->name('profile.edit');
 Route::put('/profile/{username}/edit', 'ProfileController@updateprofile')->name('profile.update');
+
+// Password Change Routes
 Route::get('/profile/{username}/edit/password', 'ProfileController@editpassword')->name('profile.password.edit');
+
+// Profile Picture Routes
 Route::post('/profile/edit/upload', 'ProfileController@store_pro_pic')->name('profile.pro_pic.store');
 Route::put('/profile/edit/upload', 'ProfileController@delete_pro_pic')->name('profile.pro_pic.delete');
+
+// Profile Routes End
 
 
 
