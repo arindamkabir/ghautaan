@@ -20,7 +20,7 @@
                     @if($data->pro_pic_name != null)
                         <img src="{{asset($data->pro_pic_path)}}" class="profile-picture" alt="..." width="150px">
                     @else
-                        <img src="https://api.adorable.io/avatars/150/abott@adorable.png" class="profile-picture" alt="..." >
+                        <img src="{{ asset('images/placeholder.jpg') }}" class="profile-picture" alt="..." width="50%">
                     @endif
                 </div>
                 <div>
