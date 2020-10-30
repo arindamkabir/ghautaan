@@ -38,7 +38,7 @@
                         <tr>
                         <th scope="row">1</th>
 
-                        <td>{{$app->name}}</td>
+                        <td>{{$app->f_name}} {{$app->l_name}}</td>
                         <td>{{$app->created_at}}</td>
                         <td>
                         <form action="{{route('employer.showfreeprofile')}}" method="POST">

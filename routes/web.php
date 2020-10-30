@@ -19,12 +19,16 @@ Route::get('/', function () {
 Route::post('/search', 'FreelancerController@search')->name('search');
 Route::put('/advanced_search', 'FreelancerController@advanced_search')->name('advanced_search');
 
-Route::get('/profile/{username}', 'ProfileController@viewprofile')->name('viewprofile');
-Route::get('/profile/{username}/edit', 'ProfileController@editprofile')->name('editprofile');
-Route::put('/profile/{username}/edit', 'ProfileController@updateprofile')->name('profile.updateprofile');
-Route::get('/profile/{username}/edit/password', 'ProfileController@editpassword')->name('editpassword');
-Route::post('/profile/edit/upload', 'ProfileController@store_pro_pic')->name('profile.store_pro_pic');
-Route::put('/profile/edit/upload', 'ProfileController@delete_pro_pic')->name('profile.delete_pro_pic');
+// Profile Routes
+Route::get('/profile/{username}', 'ProfileController@viewprofile')->name('profile.view');
+Route::get('/profile/{username}/edit', 'ProfileController@editprofile')->name('profile.edit');
+Route::put('/profile/{username}/edit', 'ProfileController@updateprofile')->name('profile.update');
+Route::get('/profile/{username}/edit/password', 'ProfileController@editpassword')->name('profile.password.edit');
+Route::post('/profile/edit/upload', 'ProfileController@store_pro_pic')->name('profile.pro_pic.store');
+Route::put('/profile/edit/upload', 'ProfileController@delete_pro_pic')->name('profile.pro_pic.delete');
+
+
+
 Route::get('/jobs/create', 'EmployerController@jobcreate')->name('jobs.create');
 Route::post('/jobs', 'EmployerController@jobstore')->name('jobs.store');
 Route::get('/profile/jobs/{job}', 'EmployerController@showjob')->name('employer.showjob');

@@ -19,7 +19,7 @@ class EmployerController extends Controller
         $applicants = DB::table('job_applications')
         ->join('users', 'job_applications.free_id', '=', 'users.id')
         ->where('job_id', $id)
-        ->select('users.name', 'job_applications.free_id', 'job_applications.created_at')
+        ->select('users.f_name','users.l_name', 'job_applications.free_id', 'job_applications.created_at')
         ->get();
 
         return view('employer.showjob', ['job' => $job, 'applicants' => $applicants]);
