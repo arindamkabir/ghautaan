@@ -22,7 +22,20 @@ class FreelancerController extends Controller
         ->orWhere('job_description', 'LIKE', "%{$searchTerm}%")
         ->orWhere('job_category', 'LIKE', "%{$searchTerm}%")
         ->orWhere('job_address', 'LIKE', "%{$searchTerm}%")  
-        ->get();
+        ->paginate(5);
+
+        return view('freelancer.searchresults',['results' => $results, 'number_results' => $results->count()]);
+
+    }
+    public function advanced_search(Request $request){
+        
+        $results = DB::table('jobs') 
+        ->where('job_address','LIKE', "%{$request->location}%")
+        ->where('job_category','LIKE', "%{$request->category}%")
+        ->where('job_budget', '>=', $request->budget)  
+        ->paginate(5);
+
+
 
         return view('freelancer.searchresults',['results' => $results, 'number_results' => $results->count()]);
 

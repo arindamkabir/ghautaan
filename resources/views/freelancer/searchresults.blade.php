@@ -6,10 +6,11 @@
 
     <h5 class="heading text-center py-4">Number of results found : {{$number_results}}</h5>
     <div class="card mt-4">
-                    <div class="card-body">
+<div class="card-body">
                         <div class="row justify-content-center">
 
                             <div class="col">
+                                @if (count($results) > 0)
                                 @foreach ($results as $job)
 
                                 <div class="card mb-3">
@@ -21,6 +22,9 @@
                                     </div>
                                 </div>
                                 @endforeach
+
+                                {{ $results->links() }}
+                                @endif
 
                             </div>
 

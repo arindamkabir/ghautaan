@@ -16,9 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::any('/search', 'FreelancerController@search')->name('search');
+Route::post('/search', 'FreelancerController@search')->name('search');
+Route::put('/advanced_search', 'FreelancerController@advanced_search')->name('advanced_search');
 
-Route::any('/profile/{username}', 'ProfileController@show')->name('profile');
+Route::get('/profile/{username}', 'ProfileController@viewprofile')->name('viewprofile');
+Route::get('/profile/{username}/edit', 'ProfileController@editprofile')->name('editprofile');
+Route::put('/profile/{username}/edit', 'ProfileController@updateprofile')->name('profile.updateprofile');
+Route::get('/profile/{username}/edit/password', 'ProfileController@editpassword')->name('editpassword');
+Route::post('/profile/edit/upload', 'ProfileController@store_pro_pic')->name('profile.store_pro_pic');
+Route::put('/profile/edit/upload', 'ProfileController@delete_pro_pic')->name('profile.delete_pro_pic');
 Route::get('/jobs/create', 'EmployerController@jobcreate')->name('jobs.create');
 Route::post('/jobs', 'EmployerController@jobstore')->name('jobs.store');
 Route::get('/profile/jobs/{job}', 'EmployerController@showjob')->name('employer.showjob');
@@ -28,6 +34,10 @@ Route::post('/jobs/applications/reject', 'EmployerController@rejectapp')->name('
 Route::get('/jobs/{job}', 'FreelancerController@showjob')->name('freelancer.showjob');
 Route::post('/jobs/{job}', 'FreelancerController@applyjob')->name('freelancer.applyjob');
 Route::put('/jobs/{job}', 'FreelancerController@canceljobapp')->name('freelancer.canceljobapp');
+
+//Admin Routes
+Route::get('/admin', 'AdminController@index')->name('admin.dashboard');
+Route::get('/admin/jobapplications', 'AdminController@jobs')->name('admin.jobs');
 
 Auth::routes();
 
