@@ -66,6 +66,9 @@
                                     <a class="dropdown-item" href="{{ route('viewprofile', Auth::user()->username)}}">
                                         Profile
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('freelancer.manage_sales', Auth::user()->username)}}">
+                                        Manage Sales
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -103,7 +106,12 @@
 
     <script type="text/javascript" src="{{ asset('js/mdb.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('js/addons/datatables.min.js')}}"></script>
-
+    <script type="text/javascript" src="{{ asset('js/addons/rating.min.js')}}"></script>
+    <script>
+    $(document).ready(function() {
+    $('#rateMe1').mdbRate();
+    });
+    </script>
     <script>
     $(document).ready(function () {
     $('#employerjobstable').DataTable();

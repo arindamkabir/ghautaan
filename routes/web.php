@@ -32,7 +32,7 @@ Route::put('/profile/edit/upload', 'ProfileController@delete_pro_pic')->name('pr
 Route::get('/jobs/create', 'EmployerController@jobcreate')->name('jobs.create');
 Route::post('/jobs', 'EmployerController@jobstore')->name('jobs.store');
 Route::get('/profile/jobs/{job}', 'EmployerController@showjob')->name('employer.showjob');
-Route::post('/jobs/applications/profile', 'EmployerController@showfreeprofile')->name('employer.showfreeprofile');
+Route::post('/jobs/applications/profile', 'EmployerController@show_free_prof')->name('employer.show_free_prof');
 Route::post('/jobs/applications/accept', 'EmployerController@acceptapp')->name('employer.acceptapp');
 Route::post('/jobs/applications/reject', 'EmployerController@rejectapp')->name('employer.rejectapp');
 Route::get('/jobs/{job}', 'FreelancerController@showjob')->name('freelancer.showjob');

@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File; 
-
-
-
 use Illuminate\Http\Request;
 use DB;
 
@@ -18,11 +15,17 @@ class ProfileController extends Controller
             ->join('freelancers', 'freelancers.user_id', '=', 'users.id')
             ->where('username', $username)
             ->first();
-            
+
             return view('freelancer.profile' , ['data' => $data]);
- 
+
         }
         elseif ((int)\Auth::user()->user_type == 2 && \Auth::user()->isAdmin == false) {
+            $data = DB::table('users')
+            ->join('employers', 'employers.user_id', '=', 'users.id')
+            ->where('username', $username)
+            ->first();
+
+            return view('employer.profile' , ['data' => $data]);
 
         }
     }
@@ -76,6 +79,7 @@ class ProfileController extends Controller
             
             return view('freelancer.editprofile_pass' , ['data' => $data]);
  
+
         }
         elseif ((int)\Auth::user()->user_type == 2 && \Auth::user()->isAdmin == false) {
             return view('freelancer.editprofile_pass');
