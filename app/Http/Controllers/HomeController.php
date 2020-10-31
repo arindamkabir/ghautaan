@@ -26,17 +26,20 @@ class HomeController extends Controller
 
         if ((int)\Auth::user()->user_type == 1 && \Auth::user()->isAdmin == false) {
             $jobs_available = DB::table('jobs')
-            ->where('job_status','!=', 'ongoing')
-            ->where('job_status','!=', 'completed')
+            ->where('job_status', 'unassigned')
             ->paginate(5);
     
             return view('freelancer.home', ['jobs_available' => $jobs_available]);
         }
         elseif ((int)\Auth::user()->user_type == 2 && \Auth::user()->isAdmin == false) {
-            $jobs_unassigned = DB::table('jobs')
+            $jobs_all = DB::table('jobs')
             ->join('users', 'jobs.user_id', '=', 'users.id')
             ->where('users.id', \Auth::user()->id)
-            ->where('job_status', 'unassigned')
+            ->get();
+            $jobs_ongoing = DB::table('jobs')
+            ->join('users', 'jobs.user_id', '=', 'users.id')
+            ->where('users.id', \Auth::user()->id)
+            ->where('job_status', 'ongoing')
             ->paginate(5);
             $jobs_pending = DB::table('jobs')
             ->join('users', 'jobs.user_id', '=', 'users.id')
@@ -47,13 +50,13 @@ class HomeController extends Controller
             ->join('users', 'jobs.user_id', '=', 'users.id')
             ->where('users.id', \Auth::user()->id)
             ->where('job_status', 'completed')
-            ->paginate(5);
+            ->get();
             // $all_jobs = DB::table('jobs')
             // ->join('users', 'jobs.user_id', '=', 'users.id')
             // ->where('users.id', \Auth::user()->id)
             // ->paginate(5);
     
-            return view('employer.dashboard', ['jobs_unassigned' => $jobs_unassigned , 'jobs_pending' => $jobs_pending, 'jobs_completed' => $jobs_completed]);       
+            return view('employer.dashboard', ['jobs_all' => $jobs_all , 'jobs_ongoing' => $jobs_ongoing, 'jobs_pending' => $jobs_pending, 'jobs_completed' => $jobs_completed]);       
         }
     }
 }

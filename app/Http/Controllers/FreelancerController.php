@@ -91,17 +91,18 @@ class FreelancerController extends Controller
         $id = \Auth::user()->id;
         $ongoing_jobs = DB::table('jobs')
         ->where('free_id', $id)
-        ->where('job_status', 'pending')
+        ->where('job_status', 'ongoing')
         ->get();
 
         $applied_jobs = DB::table('jobs')
         ->join('job_applications', 'jobs.job_id' , '=', 'job_applications.job_id')
         ->where('job_applications.free_id', $id)
+        ->where('job_status', 'pending')
         ->get();
 
-        $accepted_apps = DB::table('jobs')
-        ->join('accepted_applications', 'jobs.job_id' , '=', 'accepted_applications.job_id')
-        ->where('accepted_applications.free_id', $id)
+        $rejected_apps = DB::table('jobs')
+        ->join('rejected_applications', 'jobs.job_id' , '=', 'rejected_applications.job_id')
+        ->where('rejected_applications.free_id', $id)
         ->get();
                 
         $completed_jobs = DB::table('jobs')
@@ -110,7 +111,7 @@ class FreelancerController extends Controller
         ->get();
 
 
-        return view('freelancer.manage_sales', ['ongoing_jobs' => $ongoing_jobs,'applied_jobs'=> $applied_jobs,'accepted_apps' => $accepted_apps,'completed_jobs'=> $completed_jobs  ]);
+        return view('freelancer.sales.view', ['ongoing_jobs' => $ongoing_jobs,'applied_jobs'=> $applied_jobs,'rejected_apps' => $rejected_apps,'completed_jobs'=> $completed_jobs  ]);
 
     }
 }

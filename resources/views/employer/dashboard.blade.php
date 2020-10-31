@@ -26,7 +26,7 @@
     </div>
     <div class="col-md-9">
 
-        @if (count($jobs_unassigned) === 0 && count($jobs_pending) === 0 && count($jobs_completed) === 0)
+        @if (count($jobs_all) === 0 && count($jobs_pending) === 0 && count($jobs_completed) === 0)
 
             <h2 class="text-center">Hello, {{Auth::user()->name}}. You have not posted any jobs yet.</h2>
             <a href="{{route('jobs.create')}}" class="btn btn-block btn-success text-white">Post a new job now!</a>
@@ -39,34 +39,46 @@
         
 
         <div class="nav nav-tabs justify-content-center" id="jobs-tab" role="tablist">
-            <a class="nav-link active" id="unassigned-tab" data-toggle="tab" href="#unassigned" role="tab" aria-controls="unassigned" aria-selected="true">Unassigned</a>
-            <a class="nav-link" id="pending-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="pending" aria-selected="false">Pending</a>
+            <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">All</a>
+            <a class="nav-link" id="ongoing-tab" data-toggle="tab" href="#ongoing" role="tab" aria-controls="ongoing" aria-selected="false">Ongoing</a>
+            <a class="nav-link" id="pending-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="pending" aria-selected="false">Pending Approval</a>
             <a class="nav-link" id="completed-tab" data-toggle="tab" href="#completed" role="tab" aria-controls="completed" aria-selected="false">Completed</a>
         </div>
 
         <div class="tab-content" id="jobstabContent">
-            <div class="tab-pane fade show active" id="unassigned" role="tabpanel" aria-labelledby="unassigned-tab">
+            <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
 
                 <div class="card mt-4">
 
-                    <h5 class="card-header h5 py-4">Jobs Unassigned</h5>
+                    <h5 class="card-header h5 py-4">All Jobs That You Posted</h5>
                     <div class="card-body">
                         <div class="row justify-content-center">
 
                             <div class="col">
-                                @if (count($jobs_unassigned) > 0)
-                                @foreach ($jobs_unassigned as $job)
-
-                                <div class="card mb-3">
-                                <p class="card-header">Title: {{$job->job_title}}</p>
-                                    <div class="card-body">
-                                        <p class="card-text">Job Category: {{$job->job_category}}</p>
-                                        <p class="card-text">Job Budget: Taka {{$job->job_budget}}</p>
-                                        <a href="{{route('employer.showjob', $job->job_id)}}" class="btn btn-dark btn-md">View Details</a>
-                                    </div>
-                                </div>
-                                @endforeach
-                                {{ $jobs_unassigned->links() }}
+                                @if (count($jobs_all) > 0)
+                                    <table class="table ">
+                                        <thead class="thead-light">
+                                            <tr>
+                                            <th scope="col">Title</th>
+                                            <th scope="col">Budget</th>
+                                            <th scope="col">Category</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                    @foreach ($jobs_all as $job)
+                                            <tr>
+                                            <td>{{$job->job_title}}</td>
+                                            <td>{{$job->job_budget}}</td>
+                                            <td>{{$job->job_category}}</td>
+                                            <td>{{$job->job_status}}</td>
+                                            <td><a href="{{route('employer.showjob', $job->job_id)}}" class="btn btn-dark btn-sm">View Details</a></td>
+                                            </tr>
+                                    @endforeach
+                                            
+                                        </tbody>
+                                    </table>
                                 @endif
 
                             </div>
@@ -76,6 +88,38 @@
                 </div>
 
             </div>
+
+            
+            <div class="tab-pane fade" id="ongoing" role="tabpanel" aria-labelledby="ongoing-tab">
+                    
+                <div class="card mt-4">
+
+                    <h5 class="card-header h5 py-4">Jobs ongoing</h5>
+                    <div class="card-body">
+                        <div class="row justify-content-center">
+                            <div class="col">
+                                @if (count($jobs_ongoing) > 0)
+                                @foreach ($jobs_ongoing as $job)
+                                <div class="card mb-3">
+                                <p class="card-header">Title: {{$job->job_title}}</p>
+                                    <div class="card-body">
+                                        <p class="card-text">Job Category: {{$job->job_category}}</p>
+                                        <p class="card-text">Job Budget: Taka {{$job->job_budget}}</p>
+                                        <a href="{{route('employer.jobs.ongoing.show', $job->job_id)}}" class="btn btn-info">View Details</a>
+                                    </div>
+                                </div>
+                                @endforeach
+                                {{ $jobs_ongoing->links() }}
+                                @else
+                                <h4 class="text-center">You have no ongoing jobs.</h4>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending-tab">
                     
                 <div class="card mt-4">
@@ -96,6 +140,8 @@
                                 </div>
                                 @endforeach
                                 {{ $jobs_pending->links() }}
+                                @else
+                                <h4 class="text-center">You have no jobs pending approval.</h4>
                                 @endif
                             </div>
                         </div>
@@ -123,7 +169,8 @@
                                         </div>
                                     </div>
                                     @endforeach
-                                    {{ $jobs_completed->links() }}
+                                    @else
+                                    <h4 class="text-center">You have no completed jobs.</h4>
                                     @endif
     
                                 </div>

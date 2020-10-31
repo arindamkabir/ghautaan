@@ -65,6 +65,20 @@ class EmployerController extends Controller
         DB::table('jobs')
         ->where('job_id', $job_id)
         ->update(['job_status' => 'ongoing', 'free_id' => $free_id]);
+
+        DB::table('accepted_applications')->insert([
+            'job_id'=> $job_id,
+            'free_id' => $free_id,
+            'created_at' => date('Y-m-d H:i:s')
+        ]);
+
+
+        DB::table('job_applications')
+        ->where('job_id', $job_id)
+        ->where('free_id', $free_id)
+        ->delete();
+
+        
         return redirect()->route('home')
         ->with('success','Job Accepted!');
     }
@@ -91,5 +105,51 @@ class EmployerController extends Controller
         }
         return redirect()->route('home')
         ->with('danger','Job Rejected!');
+    }
+
+
+    public function show_ongoing_job($id){
+        $job = DB::table('jobs')->where('job_id', $id)->first();
+        $applicant = DB::table('jobs')
+        ->join('users', 'jobs.free_id', '=', 'users.id')
+        ->where('job_id', $id)
+        ->select('users.f_name','users.l_name', 'jobs.free_id', 'jobs.created_at')
+        ->first();
+
+        return view('employer.jobs.ongoing.show', ['job' => $job, 'applicant' => $applicant]);
+    }
+    public function mark_job_completed(Request $request){
+        $job_id = $request->job_id;
+        $free_id = $request->free_id;
+
+        DB::table('jobs')
+        ->where('job_id', $job_id)
+        ->update(['job_status' => 'completed']);
+
+
+        DB::table('completed_jobs')->insert([
+            'job_id'=> $job_id,
+            'free_id' => $free_id,
+            'created_at' => date('Y-m-d H:i:s')
+        ]);
+        
+        return redirect()->route('home')
+        ->with('success','Job Completed!');
+    
+    }
+
+    public function ongoing_freelancer_profile(Request $request){
+
+        $job_id = $request->job_id;
+        $free_id = $request->free_id;
+        $freelancer = DB::table('freelancers')
+        ->join('users', 'freelancers.user_id', '=', 'users.id')
+        ->where('freelancers.free_id', $free_id)
+        ->first();
+
+        $job = DB::table('jobs')->where('job_id', $job_id)->first();
+
+        return view('employer.jobs.ongoing.show_profile', ['job' => $job, 'freelancer' => $freelancer]);
+
     }
 }

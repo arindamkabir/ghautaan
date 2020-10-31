@@ -40,11 +40,15 @@ Route::get('/jobs/create', 'EmployerController@jobcreate')->name('jobs.create');
 Route::post('/jobs', 'EmployerController@jobstore')->name('jobs.store');
 Route::get('/profile/jobs/{job}', 'EmployerController@showjob')->name('employer.showjob');
 Route::post('/jobs/applications/profile', 'EmployerController@show_free_prof')->name('employer.show_free_prof');
+Route::get('/jobs/ongoing/{job}', 'EmployerController@show_ongoing_job')->name('employer.jobs.ongoing.show');
+Route::post('/jobs/ongoing/profile', 'EmployerController@ongoing_freelancer_profile')->name('employer.jobs.ongoing.show.profile');
+Route::post('/jobs/ongoing/jobs/', 'EmployerController@mark_job_completed')->name('employer.jobs.mark_completed');
 Route::post('/jobs/applications/accept', 'EmployerController@acceptapp')->name('employer.acceptapp');
 Route::post('/jobs/applications/reject', 'EmployerController@rejectapp')->name('employer.rejectapp');
 Route::get('/jobs/{job}', 'FreelancerController@showjob')->name('freelancer.showjob');
 Route::post('/jobs/{job}', 'FreelancerController@applyjob')->name('freelancer.applyjob');
 Route::put('/jobs/{job}', 'FreelancerController@canceljobapp')->name('freelancer.canceljobapp');
+Route::get('/manage_sales', 'FreelancerController@manage_sales')->name('freelancer.sales.view');
 
 //Admin Routes
 Route::get('/admin', 'AdminController@index')->name('admin.dashboard');
