@@ -24,7 +24,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 </head>
-<!-- <body>
+<body>
     <div id="app">
         <nav class="navbar navbar-expand-md shadow-sm">
             <div class="container">
@@ -159,7 +159,7 @@
 
 </footer>
 <!-- Footer -->
-</body> -->
+</body>
 
 
 </html>
