@@ -20,14 +20,11 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/mdb.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/addons/datatables.min.css') }}" rel="stylesheet">
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 </head>
-<body>
+<!-- <body>
     <div id="app">
         <nav class="navbar navbar-expand-md shadow-sm">
             <div class="container">
@@ -106,20 +103,6 @@
         </main>
     </div>
 
-    <script type="text/javascript" src="{{ asset('js/mdb.min.js')}}"></script>
-    <script type="text/javascript" src="{{ asset('js/addons/datatables.min.js')}}"></script>
-    <script type="text/javascript" src="{{ asset('js/addons/rating.min.js')}}"></script>
-    <script>
-    $(document).ready(function() {
-    $('#rateMe1').mdbRate();
-    });
-    </script>
-    <script>
-    $(document).ready(function () {
-    $('#employerjobstable').DataTable();
-    $('.dataTables_length').addClass('bs-select');
-    });
-    </script>
 
     <!-- Footer -->
 <footer class="page-footer font-small elegant-color-dark">
@@ -176,7 +159,9 @@
 
 </footer>
 <!-- Footer -->
-</body>
+</body> -->
 
 
 </html>
+
+
