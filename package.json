@@ -25,6 +25,7 @@
         "sass-loader": "^8.0.0"
     },
     "dependencies": {
-        "mdbootstrap": "^4.18.0"
+        "mdbootstrap": "^4.18.0",
+        "tailwindcss": "^1.9.6"
     }
 }
